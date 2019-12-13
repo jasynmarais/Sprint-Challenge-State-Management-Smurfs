@@ -5,9 +5,9 @@ import Smurf from './Smurf';
 const SmurfList = ({ smurfsData }) => {
     return (
         <div>
-            {smurfsData.map(smurf => {
+            {smurfsData.map(smurf => (
                 <Smurf key={smurf.name} smurf={smurf} />
-            })}
+            ))}
         </div>
     );
 };
