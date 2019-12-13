@@ -1,7 +1,10 @@
 import {
     FETCH_SMURFS_FAILURE,
     FETCH_SMURFS_START,
-    FETCH_SMURFS_SUCCESS
+    FETCH_SMURFS_SUCCESS,
+    POST_SMURFS_START,
+    POST_SMURFS_SUCCESS,
+    POST_SMURFS_FAILURE
 }   from '../actions';
 
 const initialState = {
@@ -9,8 +12,7 @@ const initialState = {
     isFetching: false,
     isPosting: false,
     isDeleting: false,
-    error: '',
-    formValues: { name: '', age: '', height: '' }
+    error: ''
 };
 
 export const reducer = (state = initialState, action) => {
@@ -33,7 +35,26 @@ export const reducer = (state = initialState, action) => {
                 isFetching: false,
                 error: action.payload
             };
+        case POST_SMURFS_START:
+            return {
+                ...state,
+                isPosting: true,
+                error: ''
+            };
+        case POST_SMURFS_SUCCESS:
+            return {
+                ...state,
+                isPosting: false,
+                smurfsData: [...action.payload]
+            };
+        case POST_SMURFS_FAILURE:
+            return {
+                ...state,
+                isPosting: false,
+                error: action.payload
+            };
+
         default:
             return state;
-    }
-};
+    };
+}
