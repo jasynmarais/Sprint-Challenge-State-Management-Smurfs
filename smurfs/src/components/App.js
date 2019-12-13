@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+
 import SmurfList from './SmurfList';
+import SmurfForm from './SmurfForm';
 
 import { fetchSmurfData } from '../actions';
 
@@ -14,6 +16,7 @@ function App({ fetchSmurfData }) {
   return (
     <div className='App'>
       <h1>Smurfs! 2.0 W/Redux</h1>
+      <SmurfForm />
       <SmurfList />
     </div>
   );
